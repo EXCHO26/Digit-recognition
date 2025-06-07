@@ -40,7 +40,7 @@ def train():
     plot_training_history(history)
 
 def plot_training_history(history):
-    # Загуба
+    # Loss
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
     plt.plot(history.history['loss'], label='Training Loss')
@@ -50,7 +50,7 @@ def plot_training_history(history):
     plt.ylabel('Loss')
     plt.legend()
 
-    # Точност
+    # Accuracity
     plt.subplot(1, 2, 2)
     plt.plot(history.history['accuracy'], label='Training Accuracy')
     plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
