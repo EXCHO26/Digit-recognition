@@ -1,16 +1,16 @@
 import tkinter as tk
+import tensorflow as tf
 from tkinter import Canvas, Button, Label
 import numpy as np
 from PIL import Image, ImageDraw
-from tensorflow.keras.models import load_model # type: ignore
 
 class DigitRecognizerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("MNIST Digit Recognizer")
+        self.root.title("Digit Recognizer")
         
         # Load your trained model
-        self.model = load_model("models/mnist_model.h5")
+        self.model = tf.keras.models.load_model("models/mnist_model.h5")
         
         # Drawing canvas
         self.canvas = Canvas(root, width=280, height=280, bg="black")
@@ -44,7 +44,7 @@ class DigitRecognizerApp:
         self.label.config(text="Draw a digit and click 'Predict'")
     
     def predict_digit(self):
-        # Convert canvas to MNIST format (28x28 grayscale)
+        # Convert canvas to MNIST format
         img = self.image.resize((28, 28))  # Resize
         img_array = np.array(img) / 255.0  # Normalize
         img_array = img_array.reshape(1, 28, 28, 1)  # Reshape for model
